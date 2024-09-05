@@ -1,5 +1,9 @@
 ## Hi there 👋
 
+My name is Chris, and I'm a PhD student in the Computational Mathematics, Science, & Engineering Department at Michigan State University. Welcome to my Github!
+
+I have quite a few academic interests. However, my background is in applied mathematics, particularly in computational plasma physics. Check out my 1DNumericalPDE repository for that work. I have since transitioned to biomedical engineering focusing on developing predictive models and longitudinal algorithms in medical imaging.
+
 <!--
 **ChrisG32123/ChrisG32123** is a ✨ _special_ ✨ repository because its `README.md` (this file) appears on your GitHub profile.
 
