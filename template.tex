@@ -14,7 +14,7 @@
 
 % Enable multicolumns
 \usepackage{multicol}
-\setlength{\columnsep}{-3.5cm}
+\setlength{\columnsep}{-4.5cm}
 
 % Uncomment to suppress page numbers
 % \pagenumbering{gobble}
@@ -34,7 +34,12 @@ $endif$
 \usepackage{xltxtra}
 % converts LaTeX specials (quotes, dashes etc.) to Unicode
 \defaultfontfeatures{Mapping=tex-text}
-\setromanfont [Ligatures={Common}, Numbers={OldStyle}]{$mainfont$}
+\setmainfont[
+  Path = /System/Library/Fonts/Supplemental/
+]{Hoefler Text}
+% TODO: Fix to $mainfont$
+
+% \setmainfont [Ligatures={Common}, Numbers={OldStyle}]{$mainfont$}
 % Cool ampersand
 \newcommand{\amper}{{\fontspec[Scale=.95]{$mainfont$}\selectfont\itshape\&}}
 
@@ -43,7 +48,7 @@ $endif$
 \usepackage{marginnote}
 \newcommand{\note}[1]{\marginnote{\scriptsize #1}}
 \renewcommand*{\raggedleftmarginnote}{}
-\setlength{\marginparsep}{7pt}
+\setlength{\marginparsep}{1pt}
 \reversemarginpar
 
 % HEADINGS
@@ -66,7 +71,6 @@ $endif$
   filecolor=black,
   urlcolor=[rgb]{0.117,0.682,0.858},
   linkcolor=[rgb]{0.117,0.682,0.858},
-  linkcolor=[rgb]{0.117,0.682,0.858},
   citecolor=[rgb]{0.117,0.682,0.858}
 }
 
@@ -74,21 +78,29 @@ $endif$
 %--------------------------------
 \begin{document}
 
-{\LARGE $name$}\\[.2cm]
+$if(name)$
+{\LARGE $name$}\\[.1cm]
+$endif$
 
 $if(urls)$
 \begin{multicols}{2}
 $endif$
 
+$if(address)$
 $for(address)$
 $address$\\
 $endfor$
+$endif$
 
 \vspace{-10pt}
 
+$if(phone)$
 $phone$\\
-\href{mailto:$email$}{$email$}\\
+$endif$
 
+$if(email)$
+\href{mailto:$email$}{$email$}\\
+$endif$
 
 $if(urls)$
 \columnbreak
@@ -99,7 +111,7 @@ $endfor$
 \end{multicols}
 $endif$
 
-\vspace{30pt}
+\vspace{2pt}
 
 $if(intro)$
 $intro$
@@ -114,31 +126,44 @@ $if(skills)$
 \end{itemize}
 $endif$
 
-% \vfill
+\vspace{2pt}
 
-\vspace{25pt}
-
-\section*{Previous Experience}
+\section*{Work Experience}
 \noindent
 $for(experience)$
 \note{$experience.years$}\textsc{$experience.employer$}\\
 \emph{$experience.job$}\\
 $experience.city$\\[.2cm]
+$experience.project$\\[.1cm]
+$for(experience.responsibilities)$
+- \emph{$experience.responsibilities$}\\[.1cm]
+$endfor$\\[.1cm]
 $endfor$
 
 $if(education)$
 \section*{Education}
 \noindent
 $for(education)$
-\note{$education.year$}\textbf{$education.subject$}$if(education.degree)$, $education.degree$$endif$\\
-\emph{$education.institute$}$if(education.city)$, $education.city$$endif$\\[.2cm]
+\note{$education.year$}\textbf{$education.degree$}, $education.subject$\\
+\emph{$education.institute$}, $education.city$\\[.2cm]
 $endfor$
 $endif$
 
-$if(languages)$
-\section*{Languages}
-$for(languages)$
-\emph{$languages.language$} ($languages.proficiency$)\\
+$if(certifications)$
+\section*{Certifications}
+\noindent
+$for(certifications)$
+\note{$certifications.date$}\textbf{$certifications.certificate$}\\
+\emph{$certifications.issuer$}\\[.2cm]
+$endfor$
+$endif$
+
+$if(conferences)$
+\section*{Conference Presentations}
+\noindent
+$for(conferences)$
+\note{$conferences.date$}\textbf{$conferences.event$}\\
+\emph{$conferences.role$}\\[.2cm]
 $endfor$
 $endif$
 

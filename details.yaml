@@ -1,0 +1,102 @@
+---
+# Personal details
+name: "Chris Gerlach"
+address:
+  - Lansing, Michigan
+  - Bay Area, California
+phone: "(510) 409-1639"
+email: chrisg.32123@gmail.com
+urls:
+  - github.com/ChrisG32123
+  - www.linkedin.com/in/chris-m-gerlach
+  - www.researchgate.net/profile/Chris-Gerlach-2
+
+# Sections
+
+intro: "Experienced researcher and educator specializing in computational mathematics, plasma simulations, and interdisciplinary math curriculum design. A strong foundation in applied mathematics and machine learning techniques, combined with hands-on teaching experience at middle and high school levels."
+
+skills:
+  - Python, Scikit-Learn, TensorFlow, Numpy, Pandas, Scipy, Matplotlib, Seaborn
+  - C++, MPI, OpenMP
+  - MATLAB, R, CUDA, LaTeX
+  - Fluent in Spanish
+  - Machine Learning, High-dimensional Data Compression, Plasma Simulations
+  - Curriculum Design, Project-based Learning, Interdisciplinary Labs
+
+experience:
+  - years: 2023 -- Present
+    employer: Michigan State University
+    job: PhD Research Assistant
+    project: High Dimensional Data Compression of Plasmas Simulations
+    responsibilities:
+      - Analyzed algorithms of low rank tensor network approximations.
+      - Delivered weekly presentations to colleagues, effectively communicating research concepts.
+
+  - years: 2023
+    employer: Simons Laufer Mathematical Sciences Institute (SLMath/MSRI)
+    job: Graduate Research Assistant
+    project: Mathematics & Computer Science of Market & Mechanism Design
+    responsibilities:
+      - Collaborated on generalizing economic models to optimize auction designs.
+
+  - years: 2021 -- 2023
+    employer: San Jose State University
+    job: Graduate Research Assistant
+    project: Plasma Dynamics & Nonequilibrium Statistical Mechanics
+    responsibilities:
+      - Developed novel multiscale hydrodynamic models for strongly-coupled plasmas.
+      - Applied wavelet transformations and spatio-temporal analysis to data.
+
+  - years: 2021 -- 2023
+    employer: Tessellations School
+    job: Math Specialist
+    responsibilities:
+      - Developed project-based Geometry through Calculus curricula for middle school.
+      - Led the vertical alignment of math courses across grades, fostering differentiation and scaffolding.
+      - Mentored students to achieve national competition success in math.
+
+education:
+  - year: 2023 -- Present
+    degree: PhD in Computational Mathematics, Science, & Engineering
+    institute: Michigan State University
+    city: East Lansing, MI
+  - year: 2021 -- 2023
+    degree: MS in Applied Mathematics
+    institute: San Jose State University
+    city: San Jose, CA
+  - year: 2018 -- 2021
+    degree: BA in Mathematics
+    institute: San Jose State University
+    city: San Jose, CA
+
+certifications:
+  - certificate: IBM Data Science Professional Certificate
+    issuer: Coursera
+    date: May 2024
+  - certificate: IBM Machine Learning Certificate
+    issuer: Coursera
+    date: May 2024
+  - certificate: DeepLearning.AI TensorFlow Developer Certificate
+    issuer: Coursera
+    date: September 2023
+
+conferences:
+  - event: 65th Annual Meeting of the APS Division of Plasma Physics
+    role: Speaker
+    date: Oct. 2023
+  - event: 50th IEEE International Conference of Plasma Science
+    role: Speaker
+    date: May 2023
+  - event: 64th Annual Meeting of the APS Division of Plasma Physics
+    role: Speaker
+    date: Oct. 2022
+  - event: 49th IEEE International Conference of Plasma Science
+    role: Invited Speaker
+    date: May 2022
+
+# Settings
+mainfont: "Hoefler Text"
+fontsize: 10pt
+lang: en
+geometry: a4paper, left=23mm, right=20mm, top=5mm, bottom=5mm
+---

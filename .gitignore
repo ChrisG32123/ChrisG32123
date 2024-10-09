@@ -1,1 +1,9 @@
-output.pdf
+# Ignore LaTeX intermediate files
+*.aux
+*.log
+*.out
+*.toc
+*.txt
+
+# Ignore PDF output
+*.pdf

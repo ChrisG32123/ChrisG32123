@@ -1,3 +1,18 @@
+# Adaptation of CV-Boilerplate
+
+To run:
+- `conda activate PersonalEnv`
+- If output.pdf already exists: `make clean`
+- `make` to run makefile
+
+Metadata is stored in `details.yml`
+LaTeX template is stored in `template.tex`
+Directions for pdf construction are stored in `makefile`
+Resume is stored in `output.pdf`
+
+
+# Original README.md File Below
+
 # CV Boilerplate
 
 > I consider LaTeX resumes to be a secret handshake of sorts, something that makes me significantly more likely to be inclined to hire a candidate.  
