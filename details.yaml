@@ -8,12 +8,11 @@ phone: "(510) 409-1639"
 email: chrisg.32123@gmail.com
 urls:
   - github.com/ChrisG32123
-  - www.linkedin.com/in/chris-m-gerlach
-  - www.researchgate.net/profile/Chris-Gerlach-2
+  - linkedin.com/in/chris-m-gerlach
+  - researchgate.net/profile/Chris-Gerlach-2
 
 # Sections
-
-intro: "Experienced researcher and educator specializing in computational mathematics, plasma simulations, and interdisciplinary math curriculum design. A strong foundation in applied mathematics and machine learning techniques, combined with hands-on teaching experience at middle and high school levels."
+intro: "Experienced researcher and educator specializing in computational mathematics, plasma simulations, and interdisciplinary math curriculum design. Strong foundation in applied mathematics and machine learning, combined with hands-on teaching experience."
 
 skills:
   - Python, Scikit-Learn, TensorFlow, Numpy, Pandas, Scipy, Matplotlib, Seaborn
@@ -24,47 +23,62 @@ skills:
   - Curriculum Design, Project-based Learning, Interdisciplinary Labs
 
 experience:
-  - years: 2023 -- Present
+  - years: "2024 – Present"
     employer: Michigan State University
-    job: PhD Research Assistant
-    project: High Dimensional Data Compression of Plasmas Simulations
+    job: PhD Research Assistant (Brain Cancer Forecasting)
+    project: "AI and Data Enabled Predictive Multiscale Modeling across STEM"
     responsibilities:
-      - Analyzed algorithms of low rank tensor network approximations.
-      - Delivered weekly presentations to colleagues, effectively communicating research concepts.
+      - Contrasted recurrent neural network models on medical data to account for non-normal distribution, longitudinal binning, nonuniform sampling, and inter/intra group correlation.
+      - NSF Research Traineeship fellowship recipient.
 
-  - years: 2023
+  - years: "2023 – 2024"
+    employer: Michigan State University
+    job: PhD Research Assistant (High Dimensional Data Modeling)
+    responsibilities:
+      - Developed physics-informed neural networks with 90%+ accuracy for plasma simulation forecasting.
+      - Reduced memory consumption by 97% using spatio-temporal analyses and dynamic mode decomposition.
+      - Advanced model instability prediction through data-driven techniques.
+      - Optimized compression of high-dimensional data structures using low-rank tensor network approximations.
+
+  - years: "2023"
     employer: Simons Laufer Mathematical Sciences Institute (SLMath/MSRI)
-    job: Graduate Research Assistant
-    project: Mathematics & Computer Science of Market & Mechanism Design
+    job: Summer Research Fellow
     responsibilities:
-      - Collaborated on generalizing economic models to optimize auction designs.
+      - Generalized strategies to mitigate dishonest bidding for optimal auction models.
 
-  - years: 2021 -- 2023
+  - years: "2021 – 2023"
     employer: San Jose State University
-    job: Graduate Research Assistant
-    project: Plasma Dynamics & Nonequilibrium Statistical Mechanics
+    job: Graduate Research Assistant (Computational Physics)
     responsibilities:
-      - Developed novel multiscale hydrodynamic models for strongly-coupled plasmas.
-      - Applied wavelet transformations and spatio-temporal analysis to data.
+      - Created a novel multiscale hydrodynamic model for strongly-coupled plasmas.
+      - Applied dynamic mode decomposition, wavelet transformations, and spectral analysis to simulated data.
 
-  - years: 2021 -- 2023
+  - years: "2021 – 2023"
     employer: Tessellations School
     job: Math Specialist
     responsibilities:
-      - Developed project-based Geometry through Calculus curricula for middle school.
-      - Led the vertical alignment of math courses across grades, fostering differentiation and scaffolding.
-      - Mentored students to achieve national competition success in math.
+      - Developed and taught project-based Geometry through Calculus and programming curricula to middle schoolers.
+      - Led Math Department in vertical alignment and differentiation from elementary to college mathematics.
+      - Mentored students to achieve 1st place finishes in national math competitions.
+      - Designed the math curriculum for a new high school, including interdisciplinary labs and a data science track.
+
+  - years: "2020 – 2021"
+    employer: San Jose State University
+    job: Undergraduate Research Assistant (Blockchain Analysis)
+    responsibilities:
+      - Led a research team analyzing Ethereum Blockchain with game theory through the CAMCOS program.
+      - Identified critical faults in the Ethereum transaction fee mechanism.
 
 education:
-  - year: 2023 -- Present
+  - year: "2023 – Present"
     degree: PhD in Computational Mathematics, Science, & Engineering
     institute: Michigan State University
     city: East Lansing, MI
-  - year: 2021 -- 2023
+  - year: "2021 – 2023"
     degree: MS in Applied Mathematics
     institute: San Jose State University
     city: San Jose, CA
-  - year: 2018 -- 2021
+  - year: "2018 – 2021"
     degree: BA in Mathematics
     institute: San Jose State University
     city: San Jose, CA
@@ -98,5 +112,5 @@ conferences:
 mainfont: "Hoefler Text"
 fontsize: 10pt
 lang: en
-geometry: a4paper, left=23mm, right=20mm, top=5mm, bottom=5mm
+geometry: a4paper, left=20mm, right=10mm, top=5mm, bottom=5mm
 ---

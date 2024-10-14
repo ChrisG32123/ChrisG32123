@@ -1,6 +1,6 @@
 # Define variables
-PDF_NAME = output.pdf
-TEMPLATE = template.tex
+PDF_NAME = output2.pdf
+TEMPLATE = template2.tex
 METADATA = details.yaml
 
 # Default target to compile the PDF

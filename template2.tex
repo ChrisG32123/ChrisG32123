@@ -1,0 +1,133 @@
+%!TEX TS-program = xelatex
+%!TEX encoding = UTF-8 Unicode
+
+\documentclass[$fontsize$, a4paper]{article}
+
+% LAYOUT
+%--------------------------------
+\usepackage{geometry} 
+\geometry{$geometry$}  % Adjust margins
+
+% Enable multicolumns
+\usepackage{multicol}
+\setlength{\columnsep}{1cm}  % Adjust spacing between columns
+
+% No paragraph indentation
+\setlength\parindent{0in}
+
+% LANGUAGE
+%--------------------------------
+\usepackage{polyglossia}
+\setmainlanguage{$lang$}
+
+% TYPOGRAPHY
+%--------------------------------
+\usepackage{fontspec} 
+\defaultfontfeatures{Mapping=tex-text}
+\setmainfont[Path=/System/Library/Fonts/Supplemental/]{Hoefler Text}  % Use main font from metadata
+
+% MARGIN NOTES
+%--------------------------------
+\usepackage{marginnote}
+\newcommand{\note}[1]{\marginnote{\scriptsize #1}}
+\renewcommand*{\raggedleftmarginnote}{}
+\setlength{\marginparsep}{7pt}
+\reversemarginpar
+
+% HEADINGS
+%--------------------------------
+\usepackage{sectsty} 
+\sectionfont{\rmfamily\mdseries} 
+\subsectionfont{\rmfamily\mdseries\scshape\normalsize} 
+\subsubsectionfont{\rmfamily\bfseries\upshape\normalsize} 
+
+% PDF SETUP
+%--------------------------------
+\usepackage{hyperref}
+\hypersetup
+{
+  pdfauthor={$name$},
+  pdftitle={$name$'s CV},
+  colorlinks, breaklinks, xetex, bookmarks,
+  filecolor=black,
+  urlcolor=[rgb]{0.117,0.682,0.858},
+  linkcolor=[rgb]{0.117,0.682,0.858},
+  citecolor=[rgb]{0.117,0.682,0.858}
+}
+
+% DOCUMENT
+%--------------------------------
+\begin{document}
+
+\begin{center}
+
+    % Header with personal details
+{\LARGE $name$}\\[1mm]
+
+\noindent
+$for(address)$
+$address$ \& 
+$endfor$
+$phone$ | 
+\href{mailto:$email$}{$email$} \\
+\vspace{1mm}
+\noindent
+$for(urls)$
+\href{http://$urls$}{$urls$} | 
+$endfor$
+\vspace{1mm}
+
+\end{center}
+
+\noindent
+$intro$
+
+% \begin{multicols}{2}
+
+% Work Experience on the left column
+\section*{Work \& Research Experience}
+$for(experience)$
+\note{$experience.years$}\emph{$experience.job$}\\
+\textsc{$experience.employer$}\\
+$experience.city$\\[0.05mm]
+$for(experience.responsibilities)$
+- $experience.responsibilities$\\ % [0.1mm]
+$endfor$\\[0.1mm]
+$endfor$
+
+% \columnbreak
+
+% Education on the right column
+\section*{Education}
+$for(education)$
+\note{$education.year$}\textbf{$education.degree$}, $education.subject$\\
+\emph{$education.institute$}, $education.city$\\[0.1mm]
+$endfor$
+
+% Certifications on the right column
+\section*{Certifications}
+$for(certifications)$
+\note{$certifications.date$}\textbf{$certifications.certificate$}\\
+\emph{$certifications.issuer$}\\[0.1mm]
+$endfor$
+
+% Skills section on the right column
+\section*{Programming Skills}
+$if(skills)$
+\begin{itemize}
+    $for(skills)$
+      \item $skills$
+    $endfor$
+\end{itemize}
+$endif$
+
+% Conferences on the right column
+\section*{Conference Presentations}
+$for(conferences)$
+\note{$conferences.date$}\textbf{$conferences.event$}\\
+\emph{$conferences.role$}\\[0.1mm]
+$endfor$
+
+% \end{multicols}
+
+\end{document}
