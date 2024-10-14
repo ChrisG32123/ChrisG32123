@@ -26,4 +26,5 @@ jobs:
       - name: Build CV
         run: |
           cd CV
-          pandoc details.yaml -o output.pdf --template=template.tex --pdf-engine=xelatex
+          pandoc --metadata-file=details.yaml --template=template.tex --pdf-engine=xelatex -o output.pdf
+
