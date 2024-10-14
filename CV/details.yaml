@@ -112,5 +112,5 @@ conferences:
 mainfont: "Hoefler Text"
 fontsize: 10pt
 lang: en
-geometry: a4paper, left=20mm, right=10mm, top=5mm, bottom=5mm
+geometry: "a4paper, left=20mm, right=10mm, top=5mm, bottom=5mm"
 ---
