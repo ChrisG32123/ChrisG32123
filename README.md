@@ -9,7 +9,7 @@ Additionally, I have other projects, some from personal passion and others from 
 Over the course of Fall 2024, I intend to 'properly' organize and document most of my projects into GitHub--the way that software engineers are expected too.
 
 Check out my projects on [GitHub](https://www.github.com/ChrisG32123), my linkedIn profile at [LinkedIn](https://www.linkedin.com/in/chris-m-gerlach/), and my researchGate profile at [ResearchGate](https://www.researchgate.net/profile/Chris-Gerlach-2).
-Additionally, you can find my CV on this repository in the [CV](https://github.com/ChrisG32123/ChrisG32123/main/CV/) folder.
+Additionally, you can find my CV on this repository in the [CV](https://github.com/ChrisG32123/ChrisG32123/tree/main/CV) folder.
 
 
 <!--
