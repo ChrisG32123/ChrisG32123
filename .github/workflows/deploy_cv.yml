@@ -11,24 +11,13 @@ jobs:
 
     steps:
       - name: Checkout Repository
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3  # Updated to v3 to avoid Node.js deprecation issues
 
       - name: Set up LaTeX Environment
         uses: xu-cheng/latex-action@v2
         with:
           root_file: CV/template.tex
-          latexmk_use_xelatex: true
-          extra_packages: >-
-            fontspec
-            geometry
-            multicol
-            xunicode
-            xltxtra
-            marginnote
-            sectsty
-            ulem
-            hyperref
-            polyglossia
+          latexmk_use_xelatex: true  # Removed deprecated extra_packages
 
       - name: Install Pandoc
         run: sudo apt-get update && sudo apt-get install -y pandoc
@@ -45,6 +34,6 @@ jobs:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           external_repository: ChrisG32123/ChrisG32123.github.io
           publish_branch: main
-          publish_dir: CV
+          publish_dir: CV  # Directory where the output files are stored
           user_name: GitHub Actions
           user_email: actions@github.com
