@@ -16,6 +16,7 @@ jobs:
       - name: Set up LaTeX Environment
         uses: xu-cheng/latex-action@v2
         with:
+          root_file: CV/template.tex
           latexmk_use_xelatex: true
           extra_packages: >-
             fontspec
