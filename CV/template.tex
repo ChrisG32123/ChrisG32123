@@ -1,169 +1,102 @@
 %!TEX TS-program = xelatex
 %!TEX encoding = UTF-8 Unicode
+\documentclass[11pt, a4paper]{article}
 
-\documentclass[$fontsize$, a4paper]{article}
-
-% LAYOUT
-%--------------------------------
-% Margins
-\usepackage{geometry} 
-\geometry{$geometry$}
-
-% Do not indent paragraphs
-\setlength\parindent{0in}
-
-% Enable multicolumns
+% Layout
+\usepackage[margin=1in]{geometry}
 \usepackage{multicol}
-\setlength{\columnsep}{-4.5cm}
+\setlength{\columnsep}{0.5cm}
 
-% Uncomment to suppress page numbers
-% \pagenumbering{gobble}
-
-% LANGUAGE
-%--------------------------------
-% Set the main language
-$if(lang)$
+% Language and Fonts
 \usepackage{polyglossia}
-\setmainlanguage{$lang$}
-$endif$
+\setmainlanguage{english}
+\usepackage{fontspec}
+\setmainfont{TeX Gyre Pagella} % You can change this to your preferred font
 
-% TYPOGRAPHY
-%--------------------------------
-\usepackage{fontspec} 
-\usepackage{xunicode}
-\usepackage{xltxtra}
-% converts LaTeX specials (quotes, dashes etc.) to Unicode
-\defaultfontfeatures{Mapping=tex-text}
-\setmainfont[
-  Path = /System/Library/Fonts/Supplemental/
-]{Hoefler Text}
-% TODO: Fix to $mainfont$
-
-% \setmainfont [Ligatures={Common}, Numbers={OldStyle}]{$mainfont$}
-% Cool ampersand
-\newcommand{\amper}{{\fontspec[Scale=.95]{$mainfont$}\selectfont\itshape\&}}
-
-% MARGIN NOTES
-%--------------------------------
-\usepackage{marginnote}
-\newcommand{\note}[1]{\marginnote{\scriptsize #1}}
-\renewcommand*{\raggedleftmarginnote}{}
-\setlength{\marginparsep}{1pt}
-\reversemarginpar
-
-% HEADINGS
-%--------------------------------
-\usepackage{sectsty} 
-\usepackage[normalem]{ulem} 
-\sectionfont{\rmfamily\mdseries} 
-\subsectionfont{\rmfamily\mdseries\scshape\normalsize} 
-\subsubsectionfont{\rmfamily\bfseries\upshape\normalsize} 
-
-% PDF SETUP
-%--------------------------------
+% Hyperref for clickable links
 \usepackage{hyperref}
-\hypersetup
-{
+\hypersetup{
   pdfauthor={$name$},
-  pdfsubject={$name$'s CV},
   pdftitle={$name$'s CV},
-  colorlinks, breaklinks, xetex, bookmarks,
-  filecolor=black,
-  urlcolor=[rgb]{0.117,0.682,0.858},
-  linkcolor=[rgb]{0.117,0.682,0.858},
-  citecolor=[rgb]{0.117,0.682,0.858}
+  colorlinks=true,
+  urlcolor=blue,
+  linkcolor=blue,
+  citecolor=blue,
 }
 
-% DOCUMENT
-%--------------------------------
 \begin{document}
 
-$if(name)$
-{\LARGE $name$}\\[.1cm]
-$endif$
+% Header with Name and Contact
+\begin{center}
+  {\LARGE \textbf{$name$}}\\[0.2cm]
+  $for(urls)$
+    \href{http://$urls$}{$urls$}\quad
+  $endfor$\\[0.2cm]
+  $if(phone)$
+    $phone$\quad
+  $endif$
+  $if(email)$
+    \href{mailto:$email$}{$email$}
+  $endif$
+\end{center}
 
-$if(urls)$
-\begin{multicols}{2}
-$endif$
-
-$if(address)$
-$for(address)$
-$address$\\
-$endfor$
-$endif$
-
-\vspace{-10pt}
-
-$if(phone)$
-$phone$\\
-$endif$
-
-$if(email)$
-\href{mailto:$email$}{$email$}\\
-$endif$
-
-$if(urls)$
-\columnbreak
-
-$for(urls)$
-\href{http://$urls$}{$urls$}\\
-$endfor$
-\end{multicols}
-$endif$
-
-\vspace{2pt}
+\vspace{0.5cm}
 
 $if(intro)$
-$intro$
+\noindent $intro$
+\vspace{0.5cm}
 $endif$
 
-\subsection*{Areas of Interest}
+\section*{Areas of Interest}
 $if(skills)$
 \begin{itemize}
-    $for(skills)$
-      \item $skills$
-    $endfor$
+  $for(skills)$
+    \item $skills$
+  $endfor$
 \end{itemize}
 $endif$
 
-\vspace{2pt}
-
 \section*{Work Experience}
-\noindent
 $for(experience)$
-\note{$experience.years$}\textsc{$experience.employer$}\\
+\noindent\textbf{$experience.employer$} \hfill $experience.years$\\
 \emph{$experience.job$}\\
-$experience.city$\\[.2cm]
-$experience.project$\\[.1cm]
-$for(experience.responsibilities)$
-- \emph{$experience.responsibilities$}\\[.1cm]
-$endfor$\\[.1cm]
+$if(experience.project)$
+\textbf{Project:} $experience.project$\\
+$endif$
+$if(experience.city)$
+$experience.city$\\
+$endif$
+$if(experience.responsibilities)$
+\begin{itemize}
+  $for(experience.responsibilities)$
+    \item $experience.responsibilities$
+  $endfor$
+\end{itemize}
+$endif$
+\vspace{0.3cm}
 $endfor$
 
 $if(education)$
 \section*{Education}
-\noindent
 $for(education)$
-\note{$education.year$}\textbf{$education.degree$}, $education.subject$\\
-\emph{$education.institute$}, $education.city$\\[.2cm]
+\noindent\textbf{$education.degree$ in $education.subject$} \hfill $education.year$\\
+$education.institute$, $education.city$\\[0.3cm]
 $endfor$
 $endif$
 
 $if(certifications)$
 \section*{Certifications}
-\noindent
 $for(certifications)$
-\note{$certifications.date$}\textbf{$certifications.certificate$}\\
-\emph{$certifications.issuer$}\\[.2cm]
+\noindent\textbf{$certifications.certificate$} \hfill $certifications.date$\\
+\emph{$certifications.issuer$}\\[0.3cm]
 $endfor$
 $endif$
 
 $if(conferences)$
 \section*{Conference Presentations}
-\noindent
 $for(conferences)$
-\note{$conferences.date$}\textbf{$conferences.event$}\\
-\emph{$conferences.role$}\\[.2cm]
+\noindent\textbf{$conferences.event$} \hfill $conferences.date$\\
+\emph{$conferences.role$}\\[0.3cm]
 $endfor$
 $endif$
 
