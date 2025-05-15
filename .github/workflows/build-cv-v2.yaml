@@ -3,7 +3,7 @@ name: Build and Deploy CV
 on:
   push:
     paths:
-      - 'template.tex'
+      - 'template3.tex'
       - 'details.yaml'
       - '**.tex'
       - 'Makefile'
