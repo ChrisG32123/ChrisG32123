@@ -2,115 +2,122 @@
 % !TEX encoding = UTF-8 Unicode
 \documentclass[11pt,a4paper]{article}
 
-% Layout
+% — Layout & Fonts —
 \usepackage[margin=1in]{geometry}
-\usepackage{multicol}
-\setlength{\columnsep}{0.5cm}
-
-% Fonts & Language
 \usepackage{fontspec}
 \usepackage{polyglossia}
-\setmainlanguage{english}
-\setmainfont{TeX Gyre Pagella}
+  \setmainlanguage{english}
+  \setmainfont{TeX Gyre Pagella}
 
-% Graphics & Floats
+% — Graphics & Floats —
 \usepackage{graphicx}
 \usepackage{float}
 
-% Links
+% — Hyperlinks & Metadata —
 \usepackage{hyperref}
 \hypersetup{
   colorlinks=true,
   urlcolor=blue,
   linkcolor=blue,
   citecolor=blue,
-  pdftitle={$name$'s CV},
+  pdftitle={$name$ CV},
   pdfauthor={$name$}
 }
 
 \begin{document}
 
-%===== Header =====
+% ===== Header =====
 \begin{center}
   {\LARGE\textbf{$name$}}\\[0.2cm]
-  $if(phone)$$phone$\\[0.1cm]$endif$
-  $if(email)\href{mailto:$email$}{$email$}\\[0.1cm]$endif$
+  $if(phone)$
+    $phone$\\[0.1cm]
+  $endif$
+  $if(email)$
+    \href{mailto:$email$}{$email$}\\[0.1cm]
+  $endif$
   $if(urls)$
+    \begin{tabular}{c}
     $for(urls)$
-      \href{https://$urls$}{$urls$}\\[0.1cm]
+      \href{https://$urls$}{$urls$}\\
     $endfor$
+    \end{tabular}\\[0.2cm]
   $endif$
 \end{center}
 
-%===== Photo =====
+% ===== Photo =====
 $if(photo)$
 \begin{figure}[H]
   \centering
-  \includegraphics[width=2.0in,keepaspectratio]{$photo$}
+  \includegraphics[width=2in,keepaspectratio]{$photo$}
 \end{figure}
 $endif$
 
 \vspace{0.5cm}
 
-%===== Intro =====
+% ===== Intro =====
 $if(intro)$
 \noindent $intro$
+
 \vspace{0.5cm}
 $endif$
 
-%===== Areas of Interest =====
+% ===== Areas of Interest =====
+$if(skills)$
 \section*{Areas of Interest}
 \begin{itemize}
-  $for(skills)$
+$for(skills)$
   \item $skills$
-  $endfor$
+$endfor$
 \end{itemize}
+$endif$
 
-%===== Work Experience =====
+% ===== Work Experience =====
 \section*{Work Experience}
 $for(experience)$
 \noindent\textbf{$experience.employer$}\hfill$experience.years$\\
 \emph{$experience.job$}\\
 $if(experience.project)$
-\textbf{Project:} $experience.project$\\
+  \textbf{Project:} $experience.project$\\
 $endif$
 $if(experience.city)$
-$experience.city$\\
+  $experience.city$\\
 $endif$
+$if(experience.responsibilities)$
 \begin{itemize}
-  $for(experience.responsibilities)$
+$for(experience.responsibilities)$
   \item $experience.responsibilities$
-  $endfor$
+$endfor$
 \end{itemize}
+$endif$
 \vspace{0.3cm}
 $endfor$
 
-%===== Education =====
+% ===== Education =====
 $if(education)$
 \section*{Education}
 $for(education)$
-\noindent\textbf{$education.degree$ in $education.subject$}\hfill$education.year$\\
-$education.institute$, $education.city$\\[0.3cm]
+  \noindent\textbf{$education.degree$ in $education.subject$}\hfill$education.year$\\
+  $education.institute$, $education.city$\\[0.3cm]
 $endfor$
 $endif$
 
-%===== Certifications =====
+% ===== Certifications =====
 $if(certifications)$
 \section*{Certifications}
 \begin{itemize}
-  $for(certifications)$
+$for(certifications)$
   \item \textbf{$certifications.certificate$} (\emph{$certifications.issuer$}, $certifications.date$)
-  $endfor$
+$endfor$
 \end{itemize}
 $endif$
 
-%===== Conferences =====
+% ===== Conferences =====
 $if(conferences)$
 \section*{Conference Presentations}
 \begin{itemize}
-  $for(conferences)$
+$for(conferences)$
   \item \textbf{$conferences.event$}, $conferences.date$ — \emph{$conferences.role$}
-  $endfor$
+$endfor$
 \end{itemize}
 $endif$
 
