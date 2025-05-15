@@ -1,4 +1,4 @@
-name: Build CV
+name: Build and Deploy CV
 
 on:
   push:
@@ -7,27 +7,47 @@ on:
       - 'details.yaml'
       - '**.tex'
       - 'Makefile'
+      - 'assets/**'
 
 jobs:
   build:
     runs-on: ubuntu-latest
     steps:
+      # 1) checkout YOUR cv-builder repo
       - uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
 
-      - name: Install TeX Live
+      # 2) install TeX Live and pandoc
+      - name: Install dependencies
         run: |
           sudo apt-get update
-          sudo apt-get install -y texlive-full
+          sudo apt-get install -y texlive-xetex texlive-fonts-recommended texlive-latex-extra
+          sudo apt-get install -y pandoc
 
-      - name: Build PDF
+      # 3) build the PDF
+      - name: Generate PDF
         run: make
 
-      - name: Publish as “latest” release
-        uses: softprops/action-gh-release@v1
+      # 4) checkout your Pages repo into ./site
+      - name: Checkout GitHub Pages
+        uses: actions/checkout@v3
         with:
-          tag_name: latest
-          name: CV.pdf
-          body: Built on ${{ github.sha }}
-          files: output.pdf
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          repository: ChrisG32123/your-pages-repo
+          token: ${{ secrets.GITHUB_TOKEN }}
+          path: site
+
+      # 5) copy the freshly built CV.pdf into the site’s assets
+      - name: Copy PDF into site
+        run: |
+          cp output.pdf site/assets/CV.pdf
+
+      # 6) commit & push back to your Pages repo
+      - name: Commit & Push updated CV
+        run: |
+          cd site
+          git config user.name "github-actions"
+          git config user.email "actions@github.com"
+          git add assets/CV.pdf
+          git commit -m "📄 Update CV: ${{ github.sha }}" || echo "No changes to commit"
+          git push origin HEAD:main
