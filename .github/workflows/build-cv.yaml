@@ -1,53 +1,51 @@
-name: Build and Deploy CV
+# .github/workflows/build-cv.yml
+name: Build & Deploy CV
 
 on:
   push:
     paths:
-      - 'CV/template3.tex'
-      - 'CV/details.yaml'
-      - 'CV/template3.tex'
-      - 'CV/makefile'
-      - 'assets/**'
+      - 'CV/**'                # rebuild whenever anything under CV/ changes
 
 jobs:
   build:
     runs-on: ubuntu-latest
+
     steps:
-      # 1) checkout YOUR cv-builder repo
+      # 1) Checkout THIS repo (CV builder)
       - uses: actions/checkout@v3
         with:
           fetch-depth: 0
 
-      # 2) install TeX Live and pandoc
-      - name: Install dependencies
+      # 2) Install TeX Live & Pandoc
+      - name: Install TeX Live & Pandoc
         run: |
           sudo apt-get update
-          sudo apt-get install -y texlive-xetex texlive-fonts-recommended texlive-latex-extra
-          sudo apt-get install -y pandoc
+          sudo apt-get install -y texlive-xetex texlive-latex-extra pandoc
 
-      # 3) build the PDF
-      - name: Generate PDF
+      # 3) Build your CV: run `make` in the CV/ directory
+      - name: Build CV PDF
+        working-directory: CV
         run: make
 
-      # 4) checkout your Pages repo into ./site
-      - name: Checkout GitHub Pages
+      # 4) Checkout your Pages repo into ./site
+      - name: Checkout Pages repo
         uses: actions/checkout@v3
         with:
-          repository: ChrisG32123/your-pages-repo
+          repository: ChrisG32123/username.github.io
           token: ${{ secrets.GITHUB_TOKEN }}
           path: site
 
-      # 5) copy the freshly built CV.pdf into the site’s assets
+      # 5) Copy the new PDF into the site’s assets folder
       - name: Copy PDF into site
         run: |
-          cp output.pdf site/assets/CV.pdf
+          cp CV/output.pdf site/assets/CV.pdf
 
-      # 6) commit & push back to your Pages repo
+      # 6) Commit & push the updated PDF back to the Pages repo
       - name: Commit & Push updated CV
         run: |
           cd site
           git config user.name "github-actions"
           git config user.email "actions@github.com"
           git add assets/CV.pdf
-          git commit -m "📄 Update CV: ${{ github.sha }}" || echo "No changes to commit"
+          git commit -m "📄 Update CV (built at ${{ github.sha }})" || echo "No changes to commit"
           git push origin HEAD:main
