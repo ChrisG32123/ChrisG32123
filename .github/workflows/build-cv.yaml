@@ -31,7 +31,7 @@ jobs:
       - name: Checkout Pages repo
         uses: actions/checkout@v3
         with:
-          repository: ChrisG32123/username.github.io
+          repository: ChrisG32123/ChrisG32123.github.io
           token: ${{ secrets.GITHUB_TOKEN }}
           path: site
 
