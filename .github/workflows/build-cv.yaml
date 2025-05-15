@@ -6,7 +6,7 @@ on:
       - 'CV/template3.tex'
       - 'CV/details.yaml'
       - 'CV/template3.tex'
-      - 'CV/Makefile'
+      - 'CV/makefile'
       - 'assets/**'
 
 jobs:
