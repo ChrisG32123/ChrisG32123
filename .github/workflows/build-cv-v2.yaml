@@ -1,0 +1,33 @@
+name: Build CV
+
+on:
+  push:
+    paths:
+      - 'template.tex'
+      - 'details.yaml'
+      - '**.tex'
+      - 'Makefile'
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Install TeX Live
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y texlive-full
+
+      - name: Build PDF
+        run: make
+
+      - name: Publish as “latest” release
+        uses: softprops/action-gh-release@v1
+        with:
+          tag_name: latest
+          name: CV.pdf
+          body: Built on ${{ github.sha }}
+          files: output.pdf
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
